@@ -1,5 +1,5 @@
 require_relative "../config/environment.rb"
-
+require "pry"
 class Student
   attr_reader :id, :name, :grade
   attr_writer  :name, :grade       # for test; another approach is to implement writer that includes save
@@ -53,6 +53,7 @@ class Student
 
   def self.find_by_name(name)
     sql = "SELECT * FROM students WHERE name=?"
+    binding.pry
     row = DB[:conn].execute(sql,name)
     self.new_from_db(row)
   end
