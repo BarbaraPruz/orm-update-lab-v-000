@@ -6,7 +6,7 @@ class Student
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
   def initialize (name, grade, id=nil)
-    @id, @grade, @id = name, grade, id
+    @name, @grade, @id = name, grade, id
   end
 
   def self.create_table
@@ -26,7 +26,7 @@ class Student
   end
 
   def save
-    if id 
+    if id
       update
     else
       sql = "INSERT INTO students (name, grade) VALUES (?,?)"
